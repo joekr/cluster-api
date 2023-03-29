@@ -281,7 +281,7 @@ providers:
 - name: test-extension
   type: RuntimeExtensionProvider
   versions:
-    - name: v1.4.99 # next; use manifest from source files
+    - name: v1.5.99 # next; use manifest from source files
       value: ../../../test/extension/config/default
       files:
       - sourcePath: "../data/shared/main/metadata.yaml"
