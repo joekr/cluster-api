@@ -1,0 +1,23 @@
+name: 'Tag Release'
+
+on:
+  pull_request:
+    types:
+      - closed
+    # branches:
+      # - 'releases/**'
+
+jobs:
+  tag-release:
+    if: ${{ github.repository == 'joekr/cluster-api' && github.event.pull_request.merged == true }}
+    runs-on: ubuntu-20.04
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          hack/tag-release.sh ${{ github.event.pull_request.title }}
